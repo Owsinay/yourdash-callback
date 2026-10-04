@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>YourDash</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font: 17px -apple-system, system-ui, sans-serif; margin: 0; min-height: 100vh;
+           display: grid; place-items: center; text-align: center; padding: 24px; box-sizing: border-box; }
+    a { display: inline-block; margin-top: 16px; padding: 12px 20px; border-radius: 12px;
+        background: #6E66FF; color: #fff; text-decoration: none; font-weight: 600; }
+  </style>
+  <script>
+    // Enable Banking only accepts https redirect URLs. This page hands the
+    // bank's answer (?code=…&state=… or ?error=…) straight back to the app,
+    // which is waiting for the yourdash:// scheme. Nothing is stored or sent
+    // anywhere else.
+    var target = "yourdash://bank-callback" + window.location.search;
+    window.location.replace(target);
+  </script>
+</head>
+<body>
+  <div>
+    <p>Wracamy do YourDash…<br>Returning to YourDash…</p>
+    <a id="open" href="yourdash://bank-callback">Otwórz YourDash / Open YourDash</a>
+  </div>
+  <script>
+    document.getElementById("open").href = target;
+  </script>
+</body>
+</html>
